@@ -1,0 +1,35 @@
+/* ST_MARYS_FRAMEWORK/styles/tokens.css */
+/* Define CSS variables for Light and Ink (dark) themes */
+
+:root {
+  --color-primary: #40C4B4;
+  --color-secondary: #C2185B;
+  --color-accent: #D4AF37;
+  --color-background: #FFFFFF;
+  --color-background-secondary: #F5F5F5;
+  --color-foreground: #0A0A0A;
+  --color-foreground-secondary: #555555;
+  --color-border: #E5E7EB;
+  --color-ring: #94A3B8;
+  --gradient-primary: linear-gradient(90deg, #40C4B4 0%, #C2185B 100%);
+  --gradient-secondary: linear-gradient(90deg, #C2185B 0%, #40C4B4 100%);
+  /* Typography scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+}
+
+[data-theme="dark"] {
+  --color-background: #0A0A0A;
+  --color-background-secondary: #161616;
+  --color-foreground: #FFFFFF;
+  --color-foreground-secondary: #CCCCCC;
+  --color-border: #2D2D2D;
+  --color-ring: #627D98;
+}
