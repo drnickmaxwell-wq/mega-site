@@ -2,7 +2,7 @@
 import React from 'react'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
-import WaveBackgroundLayout from '@/components/layout/WaveBackgroundLayout'
+import { WaveBackgroundLayout } from '@/components/layout/WaveBackgroundLayout'
 import Hero from '@/components/sections/Hero'
 import Stats from '@/components/sections/Stats'
 import Features from '@/components/sections/Features'
