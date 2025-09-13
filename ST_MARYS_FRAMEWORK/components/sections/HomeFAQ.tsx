@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import FAQAccordion from '@/components/faq/FAQAccordion'
+import { FAQAccordion } from '@/components/faq/FAQAccordion'
 // Import FAQs from zero-click dataset. Because Next.js supports JSON import, this will be tree-shaken.
 import faqs from '@/data/zero-click/home.json'
 
