@@ -10,9 +10,8 @@ const colors = {
   neutralContrast: { light: '#262626', ink: '#F5F5F5' },
 };
 
-export const metadata = {
-  title: 'Style Guide',
-};
+// Note: metadata export is omitted because this is a client component. Next.js
+// requires metadata exports to come from server components.
 
 export default function StyleGuidePage() {
   const themes: ('light' | 'ink')[] = ['light','ink'];
