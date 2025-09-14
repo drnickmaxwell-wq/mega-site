@@ -1,0 +1,12 @@
+{
+  "name": "mega-site-root",
+  "private": true,
+  "scripts": {
+    "postinstall": "pnpm --dir ST_MARYS_FRAMEWORK install --frozen-lockfile",
+    "build": "pnpm --dir ST_MARYS_FRAMEWORK build",
+    "dev": "pnpm --dir ST_MARYS_FRAMEWORK dev",
+    "start": "pnpm --dir ST_MARYS_FRAMEWORK start"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "engines": { "node": ">=18 <=20" }
+}
