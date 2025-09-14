@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev ST_MARYS_FRAMEWORK",
+    "build": "next build ST_MARYS_FRAMEWORK",
+    "start": "next start ST_MARYS_FRAMEWORK",
+    "lint": "next lint ST_MARYS_FRAMEWORK"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "framer-motion": "^11.3.8"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
