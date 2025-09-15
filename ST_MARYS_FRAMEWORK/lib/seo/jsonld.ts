@@ -1,72 +1,123 @@
-export function generateOrganizationJsonLd() {
-  return {
-    '@context': 'https://schema.org',
+// Minimal, typed JSON-LD helpers. Import into pages and pass into <SEOHead/>
+
+// Define a generic type for JSON-LD objects
+
+export type Thing = Record<string, any>;
+
+// Helper to add @context to our objects
+const asScript = (obj: Thing) => ({
+  '@context': 'https://schema.org',
+  ...obj
+});
+
+export function organizationJsonLd(opts: {
+  name: string;
+  url: string;
+  logo?: string;
+  sameAs?: string[];
+}): Thing {
+  return asScript({
     '@type': 'Organization',
-    name: "St Mary\u2019s House Dental Care",
-    url: process.env.NEXT_PUBLIC_SITE_URL || '',
-  };
+    name: opts.name,
+    url: opts.url,
+    logo: opts.logo,
+    sameAs: opts.sameAs
+  });
 }
 
-export function generateLocalBusinessJsonLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: "St Mary\u2019s House Dental Care",
-    description: 'A private dental clinic offering cosmetic and restorative treatments.',
-    url: process.env.NEXT_PUBLIC_SITE_URL || '',
+export function localBusinessDentistJsonLd(opts: {
+  name: string;
+  url: string;
+  telephone?: string;
+  address: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry: 'GB' | string;
+  };
+  geo?: { latitude: number; longitude: number };
+  openingHours?: string[];
+  image?: string;
+}): Thing {
+  return asScript({
+    '@type': ['Dentist', 'LocalBusiness'],
+    name: opts.name,
+    url: opts.url,
+    telephone: opts.telephone,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'St Mary\u2019s House, Brighton Road',
-      addressLocality: 'Shoreham-by-Sea',
-      postalCode: 'BN43',
-      addressCountry: 'GB',
+      ...opts.address
     },
-    telephone: '+44 1273 123456',
-  };
+    geo: opts.geo ? { '@type': 'GeoCoordinates', ...opts.geo } : undefined,
+    openingHours: opts.openingHours,
+    image: opts.image
+  });
 }
 
-export function generateServiceJsonLd({ name, description, slug }: { name: string; description: string; slug: string; }) {
-  return {
-    '@context': 'https://schema.org',
+export function serviceJsonLd(opts: {
+  name: string;
+  description: string;
+  providerName: string;
+  areaServed?: string | string[];
+  serviceType?: string;
+  url?: string;
+  image?: string;
+}): Thing {
+  return asScript({
     '@type': 'Service',
-    name,
-    description,
-    areaServed: 'Shoreham-by-Sea, BN43',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/treatments/${slug}`,
-    provider: generateOrganizationJsonLd(),
-  };
+    name: opts.name,
+    description: opts.description,
+    provider: { '@type': 'Dentist', name: opts.providerName },
+    areaServed: opts.areaServed,
+    serviceType: opts.serviceType ?? opts.name,
+    url: opts.url,
+    image: opts.image
+  });
 }
 
-export function generateOfferJsonLd({ price, currency = 'GBP', validFrom }: { price: number; currency?: string; validFrom?: string; }) {
-  return {
+export function offerJsonLd(opts: {
+  name: string;
+  price?: number;
+  priceCurrency?: 'GBP';
+  availability?: 'https://schema.org/InStock' | 'https://schema.org/LimitedAvailability';
+  url?: string;
+  eligibleRegion?: string;
+}): Thing {
+  return asScript({
     '@type': 'Offer',
-    price,
-    priceCurrency: currency,
-    availability: 'https://schema.org/InStock',
-    validFrom,
-  };
+    name: opts.name,
+    price: opts.price,
+    priceCurrency: opts.priceCurrency ?? 'GBP',
+    availability: opts.availability,
+    url: opts.url,
+    eligibleRegion: opts.eligibleRegion
+  });
 }
 
-export function generateFAQPageJsonLd(faqs: { question: string; answer: string; }[]) {
-  return {
-    '@context': 'https://schema.org',
+export function faqPageJsonLd(faqs: { question: string; answer: string }[]): Thing {
+  return asScript({
     '@type': 'FAQPage',
-    mainEntity: faqs.map(({ question, answer }) => ({
+    mainEntity: faqs.map((f) => ({
       '@type': 'Question',
-      name: question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: answer,
-      },
-    })),
-  };
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer }
+    }))
+  });
 }
 
-export function generateImageObjectJsonLd({ url, width, height }: { url: string; width: number; height: number; }) {
-  return {
+export function imageObjectJsonLd(opts: {
+  url: string;
+  width?: number;
+  height?: number;
+  caption?: string;
+}): Thing {
+  return asScript({
     '@type': 'ImageObject',
-    contentUrl: url,
-    width,
-    height,
-  };
+    contentUrl: opts.url,
+    url: opts.url,
+    width: opts.width,
+    height: opts.height,
+    caption: opts.caption
+  });
 }
