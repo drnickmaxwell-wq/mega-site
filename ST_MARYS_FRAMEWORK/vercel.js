@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
@@ -23,8 +24,7 @@ const nextConfig = {
     return [
       {
         source: '/(.*)',
-        headers: [
-          { key: 'X-Frame-Options', value: 'DENY' },
+        headers: [          { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
         ],
@@ -41,11 +41,20 @@ const nextConfig = {
     ];
   },
   // PWA configuration (disabled by default)
+  // Uncomment and configure when ready to enable PWA
   // pwa: {
   //   dest: 'public',
+  //   disable: process.env.NODE_ENV === 'development',
   //   register: true,
   //   skipWaiting: true,
   // },
 };
 
-module.exports = withContentlayer(withMDX(nextConfig));
+module.exports = withContentlayer(withMDX(nextConfig));{
+  "framework": "nextjs",
+  "buildCommand": "pnpm build",
+  "devCommand": "pnpm dev",
+  "installCommand": "pnpm install",
+  "outputDirectory": ".next"
+}
+
