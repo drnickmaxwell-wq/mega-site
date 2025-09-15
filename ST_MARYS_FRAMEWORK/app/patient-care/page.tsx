@@ -1,4 +1,4 @@
-h
+
 export default function PatientCarePage() {
   return (
     <div>
@@ -7,3 +7,4 @@ export default function PatientCarePage() {
     </div>
   );
 }
+
