@@ -1,32 +1,49 @@
-'use client';
+import * as React from 'react';
+import type { Metadata } from 'next';
 
-import Head from 'next/head';
-import React from 'react';
-
-interface SEOHeadProps {
+// Props for building metadata and injecting JSON-LD scripts
+export type SEOHeadProps = {
   title: string;
-  description: string;
-  jsonLd?: object | object[];
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  jsonLd?: Array<Record<string, any>>;
+};
+
+// Helper to build Next.js metadata based on page-level props
+export function buildMetadata({ title, description, canonical, ogImage }: SEOHeadProps): Metadata {
+  return {
+    title,
+    description,
+    alternates: canonical ? { canonical } : undefined,
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      images: ogImage ? [{ url: ogImage }] : undefined,
+      siteName: "St Mary's House Dental Care",
+    },
+    twitter: {
+      card: ogImage ? 'summary_large_image' : 'summary',
+      title,
+      description,
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
 }
 
-export default function SEOHead({ title, description, jsonLd }: SEOHeadProps) {
+// Component to output JSON-LD scripts into the head of a page
+export function SEOHead({ jsonLd }: { jsonLd?: Array<Record<string, any>> }) {
+  if (!jsonLd || jsonLd.length === 0) return null;
   return (
-    <Head>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      {/* Open Graph tags */}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content="website" />
-      {/* Twitter card */}
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      {jsonLd && (
+    <>
+      {jsonLd.map((obj, idx) => (
         <script
+          key={idx}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(obj) }}
         />
-      )}
-    </Head>
+      ))}
+    </>
   );
 }
