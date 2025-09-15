@@ -69,10 +69,7 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Treatment, Blog, Leaflet],
   mdx: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      rehypeSlug,
-      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-    ],
-  },
-});
+:    remarkPlugins: [],
+    rehypePlugins: 
+        },
+],
