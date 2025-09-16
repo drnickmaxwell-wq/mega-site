@@ -1,0 +1,24 @@
+{
+  "name": "mega-site",
+  "private": true,
+  "packageManager": "pnpm@8.15.0",
+  "scripts": {
+    "dev": "cd ST_MARYS_FRAMEWORK && pnpm dev",
+    "build": "cd ST_MARYS_FRAMEWORK && pnpm build",
+    "start": "cd ST_MARYS_FRAMEWORK && pnpm start",
+    "lint": "cd ST_MARYS_FRAMEWORK && pnpm lint",
+    "type-check": "cd ST_MARYS_FRAMEWORK && pnpm type-check"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
