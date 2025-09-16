@@ -1,0 +1,23 @@
+{
+  "name": "smh-mega-site",
+  "private": true,
+  "packageManager": "pnpm@8.15.4",
+  "engines": { "node": ">=20 <21" },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "typescript": "5.5.4",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5"
+  }
+}
