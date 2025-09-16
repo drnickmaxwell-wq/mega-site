@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "installCommand": "cd ST_MARYS_FRAMEWORK && pnpm install --frozen-lockfile",
+  "installCommand": "cd ST_MARYS_FRAMEWORK && pnpm install",
   "buildCommand": "cd ST_MARYS_FRAMEWORK && pnpm build",
   "devCommand": "cd ST_MARYS_FRAMEWORK && pnpm dev"
 }
