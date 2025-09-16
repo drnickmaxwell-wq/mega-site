@@ -1,0 +1,3 @@
+{
+  "extends": "./ST_MARYS_FRAMEWORK/tsconfig.json"
+}
