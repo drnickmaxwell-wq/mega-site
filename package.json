@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "mega-site",
+  "workspaces": ["ST_MARYS_FRAMEWORK"],
+  "scripts": {
+    "preinstall": "cp -f ST_MARYS_FRAMEWORK/pnpm-lock.yaml ./pnpm-lock.yaml || true",
+    "dev": "pnpm --filter st-marys-house-dental-care dev",
+    "build": "pnpm --filter st-marys-house-dental-care build",
+    "start": "pnpm --filter st-marys-house-dental-care start",
+    "lint": "pnpm --filter st-marys-house-dental-care lint"
+  },
+  "engines": {
+    "node": ">=18 <=20",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}
