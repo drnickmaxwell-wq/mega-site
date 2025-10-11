@@ -1,0 +1,35 @@
+:root {
+  --color-background: #F7F7F9;
+  --color-foreground: #1A1C1F;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1A1C1F;
+  --color-primary: #C2185B;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #40C4B4;
+  --color-secondary-foreground: #FFFFFF;
+  --color-accent: #D4AF37;
+  --color-accent-foreground: #1A1C1F;
+  --color-muted: #F7F7F9;
+  --color-muted-foreground: #767E87;
+  --color-border: #DFDFE4;
+  --color-input: #E5E7EB;
+  --color-destructive: #DB4437;
+  --color-destructive-foreground: #FFFFFF;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+/* Dark theme overrides */
+.theme-ink {
+  --color-background: #1A1C1F;
+  --color-foreground: #F7F7F9;
+  --color-card: #24272B;
+  --color-card-foreground: #F7F7F9;
+  --color-muted: #181C20;
+  --color-muted-foreground: #A0AEB8;
+  --color-border: #3D3F46;
+  --color-input: #3D3F46;
+  /* primary, secondary, accent colors remain the same across themes */
+}
